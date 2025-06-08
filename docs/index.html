@@ -83,6 +83,15 @@
             border-radius: 0 0.375rem 0.375rem 0.375rem; 
         }
         .tab-content.active { display: block; }
+
+        /* Estilos para las tarjetas de perfil en "Sobre nosotros" */
+        .profile-card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800">
@@ -98,6 +107,7 @@
             <button class="tab-button active" data-tab="inicio">Inicio</button>
             <button class="tab-button" data-tab="calendario">Calendario</button>
             <button class="tab-button" data-tab="sobrenosotros">Sobre nosotros</button>
+            <button class="tab-button" data-tab="motivacion">Motivación</button>
         </div>
 
         <div id="inicio-content" class="tab-content active">
@@ -105,7 +115,8 @@
                 Bienvenido a UNIDEPOT, un repositorio en el que podrás encontrar recursos de las asignaturas relativas al Grado de Ingeniería Informática de la UGR. <br class="hidden sm:block"> Explora los cursos y asignaturas para acceder a apuntes, ejercicios y exámenes.
             </p>
             <div id="courses-container" class="space-y-2.5">  
-                </div>
+                <!-- El contenido de los cursos se generará aquí por JavaScript -->
+            </div>
         </div>
 
         <div id="calendario-content" class="tab-content">
@@ -114,9 +125,69 @@
         </div>
 
         <div id="sobrenosotros-content" class="tab-content">
-            <h2 class="text-xl font-semibold text-slate-700 mb-4">Sobre Nosotros</h2>
-            <p class="text-slate-600 mb-2">UNIDEPOT es un proyecto creado por AMO para facilitar el acceso a recursos de estudio para el Grado en Ingeniería Informática de la UGR.</p>
-            <p class="text-slate-600">¡Esperamos que te sea de gran utilidad!</p>
+            <h2 class="text-2xl font-semibold text-slate-800 mb-2">Nuestro Equipo</h2>
+            <p class="text-slate-600 mb-8">Conoce a los colaboradores que hacen posible UNIDEPOT.</p>
+            <!-- Grid de perfiles ajustado a 3 columnas en pantallas medianas y superiores -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Tarjeta de Perfil 1 -->
+                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
+                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e2e8f0/334155?text=AMO" alt="Foto de Perfil">
+                    <h3 class="text-lg font-semibold text-slate-800">AMO</h3>
+                    <p class="text-sm text-slate-500 mb-4">Líder del Proyecto</p>
+                    <a href="https://github.com/unidepot" target="_blank" rel="noopener noreferrer" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
+                </div>
+                <!-- Tarjeta de Perfil 2 -->
+                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
+                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C1" alt="Foto de Perfil">
+                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 1</h3>
+                    <p class="text-sm text-slate-500 mb-4">Especialista en 1º Curso</p>
+                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
+                </div>
+                <!-- Tarjeta de Perfil 3 -->
+                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
+                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C2" alt="Foto de Perfil">
+                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 2</h3>
+                    <p class="text-sm text-slate-500 mb-4">Especialista en 2º Curso</p>
+                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
+                </div>
+                <!-- Tarjeta de Perfil 4 -->
+                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
+                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C3" alt="Foto de Perfil">
+                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 3</h3>
+                    <p class="text-sm text-slate-500 mb-4">Especialista en 3º Curso</p>
+                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
+                </div>
+                <!-- Tarjeta de Perfil 5 -->
+                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
+                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C4" alt="Foto de Perfil">
+                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 4</h3>
+                    <p class="text-sm text-slate-500 mb-4">Especialista en 4º Curso</p>
+                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
+                </div>
+                <!-- Tarjeta de Perfil 6 -->
+                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
+                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C5" alt="Foto de Perfil">
+                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 5</h3>
+                    <p class="text-sm text-slate-500 mb-4">Diseño y UX</p>
+                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
+                </div>
+                 <!-- Tarjeta de Perfil 7 -->
+                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
+                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C6" alt="Foto de Perfil">
+                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 6</h3>
+                    <p class="text-sm text-slate-500 mb-4">Documentación</p>
+                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="motivacion-content" class="tab-content">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Nuestra Motivación</h2>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+                <p>Nuestra motivación para crear UNIDEPOT nace de la propia experiencia como estudiantes de Ingeniería Informática. A lo largo de la carrera, hemos sentido la necesidad de tener un lugar centralizado, fiable y de fácil acceso donde encontrar todos los recursos necesarios para cada asignatura.</p>
+                <p>Este proyecto es nuestra respuesta a esa necesidad: un esfuerzo colaborativo para construir el repositorio que nos hubiera gustado tener desde el principio. Buscamos no solo facilitar nuestro propio estudio, sino también crear una herramienta valiosa para las futuras generaciones de estudiantes de la UGR, fomentando un espíritu de comunidad y apoyo mutuo.</p>
+                <p>¡Esperamos que UNIDEPOT os ayude a alcanzar vuestros objetivos académicos!</p>
+            </div>
         </div>
     </main>
 
@@ -129,7 +200,7 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // --- ESTRUCTURA DE DATOS DE LA UNIVERSIDAD ---
+        // --- ESTRUCTURA DE DATOS DE LA UNIVERSIDAD (se mantiene igual) ---
         const universityData = [
             {
                 courseName: "Primer Curso",
@@ -137,7 +208,7 @@
                     {
                         semesterName: "Primer Semestre",
                         subjects: [
-                            { name: "Cálculo", resources: { apuntes: "https://github.com/TuUsuario/TuRepo/tree/main/PrimerCurso/Calculo/Apuntes", ejercicios: "https://github.com/TuUsuario/TuRepo/blob/main/PrimerCurso/Calculo/ejercicios_tema1.pdf", examenes: "#" }},
+                            { name: "Cálculo", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
                             { name: "Fundamentos Físicos y Tecnológicos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
                             { name: "Fundamentos de Programación", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
                             { name: "Fundamentos del Software", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
@@ -234,13 +305,10 @@
                 ]
             }
         ];
-        // Nota: Para abreviar, en las especialidades usé resources:{a:"#",e:"#",x:"#"} como placeholder. 
-        // Deberás reemplazar "#" con las URLs reales.
 
         const coursesContainer = document.getElementById('courses-container');
 
         // --- FUNCIONES PARA GENERAR HTML DINÁMICAMENTE ---
-        // Modificado createSubjectAccordion para tomar subjectData (objeto)
         function createSubjectAccordion(subjectData) {
             const li = document.createElement('li');
             li.className = 'subject-accordion-item border-t border-slate-200 first:border-t-0'; 
@@ -254,7 +322,7 @@
             const optionsUl = document.createElement('ul');
             optionsUl.className = 'space-y-px py-1'; 
             
-            const resources = subjectData.resources || {}; // Usar objeto vacío si no hay resources
+            const resources = subjectData.resources || {};
             const resourceLinks = [
                 { label: 'Apuntes', url: resources.apuntes || '#' },
                 { label: 'Ejercicios', url: resources.ejercicios || '#' },
@@ -265,8 +333,8 @@
                 const optionLi = document.createElement('li');
                 const optionLink = document.createElement('a');
                 optionLink.href = linkInfo.url;
-                optionLink.target = "_blank"; // Abrir en nueva pestaña
-                optionLink.rel = "noopener noreferrer"; // Seguridad para target="_blank"
+                optionLink.target = "_blank"; 
+                optionLink.rel = "noopener noreferrer"; 
                 optionLink.className = 'block py-0.5 px-1.5 rounded-md text-slate-500 hover:text-sky-700 hover:bg-sky-100 transition-all duration-150 text-xs'; 
                 optionLink.textContent = linkInfo.label;
                 optionLi.appendChild(optionLink);
@@ -279,18 +347,16 @@
             return li;
         }
 
-        // Modificado createSubjectsList para pasar el objeto subjectData
         function createSubjectsList(subjectsArray) {
             const ul = document.createElement('ul');
             ul.className = 'space-y-0 pt-0.5 pb-0.5'; 
-            subjectsArray.forEach(subjectData => { // Ahora itera sobre objetos
+            subjectsArray.forEach(subjectData => { 
                 ul.appendChild(createSubjectAccordion(subjectData));
             });
             return ul;
         }
         
-        // createSubAccordionItem se mantiene igual en su firma y lógica interna de creación de elementos
-        function createSubAccordionItem(title, actualContentElement, isInitiallyOpen = false, isSpecializationGroupTitle = false, isContainerOfMoreAccordions = false) {
+        function createSubAccordionItem(title, actualContentElement, isSpecializationGroupTitle = false, isContainerOfMoreAccordions = false) {
             const itemDiv = document.createElement('div'); 
             itemDiv.className = `sub-accordion-item border-t border-slate-200 ${isSpecializationGroupTitle ? 'pt-0.5' : ''}`; 
 
@@ -311,19 +377,18 @@
                 listContainerDiv.className = 'sub-subject-list px-1' + (isSpecializationGroupTitle ? ' ml-1.5' : ''); 
             }
 
-            if (isInitiallyOpen) {
-                listContainerDiv.classList.add('open');
-            }
             listContainerDiv.appendChild(actualContentElement); 
 
             itemDiv.appendChild(button);
             itemDiv.appendChild(listContainerDiv);
             return itemDiv;
         }
-
-        // Generar contenido solo si el contenedor de cursos existe (está en la pestaña de Inicio)
-        if (coursesContainer) {
-            universityData.forEach(course => {
+        
+        // Función principal para construir el contenido de los cursos
+        function buildCoursesContent() {
+             if (!coursesContainer) return;
+             coursesContainer.innerHTML = '';
+             universityData.forEach(course => {
                 const courseItemDiv = document.createElement('div');
                 courseItemDiv.className = 'course-item bg-white rounded-md shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden'; 
 
@@ -340,13 +405,13 @@
                 if (course.semesters) { 
                     course.semesters.forEach(semester => {
                         const subjectsUl = createSubjectsList(semester.subjects); 
-                        subAccordionContainerForCourse.appendChild(createSubAccordionItem(semester.semesterName, subjectsUl, true, false, false));
+                        subAccordionContainerForCourse.appendChild(createSubAccordionItem(semester.semesterName, subjectsUl, false, false));
                     });
                 } else if (course.groups) { 
                     course.groups.forEach(group => {
                         if (group.type === "semester") { 
                             const subjectsUl = createSubjectsList(group.subjects); 
-                            subAccordionContainerForCourse.appendChild(createSubAccordionItem(group.groupName, subjectsUl, true, false, false));
+                            subAccordionContainerForCourse.appendChild(createSubAccordionItem(group.groupName, subjectsUl, false, false));
                         } else if (group.type === "specialization_container") {
                             const specializationsButtonContainerDiv = document.createElement('div'); 
                             specializationsButtonContainerDiv.className = 'space-y-0 sub-accordion-container'; 
@@ -366,29 +431,38 @@
             });
         }
         
-        // --- SCRIPT PARA LOS DESPLEGABLES DE CURSOS (ACORDEÓN) ---
-        const initAccordion = (toggleSelector) => {
-            const toggles = document.querySelectorAll(toggleSelector);
-            if (!toggles.length && toggleSelector !== '.tab-button') { 
-                return; 
+
+        // --- SCRIPT PARA PESTAÑAS Y DESPLEGABLES ---
+        const mainContentArea = document.querySelector('main');
+
+        mainContentArea.addEventListener('click', function(e) {
+            const tabButton = e.target.closest('.tab-button');
+            if (tabButton) {
+                const targetTab = tabButton.dataset.tab;
+                
+                mainContentArea.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                tabButton.classList.add('active');
+
+                mainContentArea.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.toggle('active', content.id === `${targetTab}-content`);
+                });
+                return;
             }
+            
+            const toggleButton = e.target.closest('.course-toggle, .sub-accordion-toggle, .subject-name-toggle');
+            if (toggleButton) {
+                const listElement = toggleButton.nextElementSibling;
+                const arrowElement = toggleButton.querySelector('.arrow') || toggleButton.querySelector('.sub-arrow');
+                const parentElement = toggleButton.parentElement; 
+                const parentContainer = parentElement.parentElement; 
+                const isAlreadyOpen = listElement.classList.contains('open');
 
-            toggles.forEach(toggle => {
-                toggle.addEventListener('click', (e) => {
-                    e.stopPropagation(); 
-                    
-                    const listElement = toggle.nextElementSibling;
-                    const arrowElement = toggle.querySelector('.arrow') || toggle.querySelector('.sub-arrow');
-                    
-                    const parentElement = toggle.parentElement; 
-                    const parentContainer = parentElement.parentElement; 
-
-                    if (parentContainer) {
-                        const siblingItems = Array.from(parentContainer.children);
-                        
-                        siblingItems.forEach(siblingItem => {
-                            if (siblingItem !== parentElement && siblingItem.querySelector(toggleSelector)) { 
-                                const siblingToggle = siblingItem.querySelector(toggleSelector);
+                if (parentContainer) {
+                    const siblingItems = Array.from(parentContainer.children);
+                    siblingItems.forEach(siblingItem => {
+                        if (siblingItem !== parentElement) { 
+                            const siblingToggle = siblingItem.querySelector('.course-toggle, .sub-accordion-toggle, .subject-name-toggle');
+                            if (siblingToggle) {
                                 const siblingList = siblingToggle.nextElementSibling;
                                 if (siblingList && siblingList.classList.contains('open')) {
                                     siblingList.classList.remove('open');
@@ -399,53 +473,21 @@
                                     }
                                 }
                             }
-                        });
-                    }
-                    
-                    if (listElement) {
-                        listElement.classList.toggle('open');
-                        toggle.classList.toggle('open-active'); 
-                    }
-                    if (arrowElement) {
-                        arrowElement.classList.toggle('rotate-180');
-                    }
-                });
-            });
-        };
-
-        // --- SCRIPT PARA LAS PESTAÑAS DE NAVEGACIÓN ---
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetTab = button.dataset.tab;
-
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                tabContents.forEach(content => {
-                    if (content.id === `${targetTab}-content`) {
-                        content.classList.add('active');
-                    } else {
-                        content.classList.remove('active');
-                    }
-                });
-                if (targetTab === 'inicio' && coursesContainer) {
-                    initAllAccordions();
+                        }
+                    });
                 }
-            });
+                
+                if (listElement) {
+                    listElement.classList.toggle('open', !isAlreadyOpen);
+                    toggleButton.classList.toggle('open-active', !isAlreadyOpen); 
+                }
+                if (arrowElement) {
+                    arrowElement.classList.toggle('rotate-180', !isAlreadyOpen);
+                }
+            }
         });
-        
-        function initAllAccordions() {
-            initAccordion('.course-toggle');
-            initAccordion('.sub-accordion-toggle');
-            initAccordion('.subject-name-toggle');
-        }
 
-        if (document.getElementById('inicio-content').classList.contains('active')) {
-            initAllAccordions();
-        }
+        buildCoursesContent();
 
     </script>
 
