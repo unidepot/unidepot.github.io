@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivación - UNIDEPOT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Raleway', 'sans-serif'], 
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif; 
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <nav class="bg-slate-900 text-white shadow-lg"> 
+        <div class="container mx-auto px-6 py-3.5 flex justify-between items-center"> 
+            <a href="index.html" class="text-lg font-semibold hover:text-slate-300 transition-colors duration-200">UNIDEPOT</a> 
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-slate-300 transition-colors duration-200">Inicio</a>
+                <a href="calendario.html" class="hover:text-slate-300 transition-colors duration-200">Calendario</a>
+                <a href="sobrenosotros.html" class="hover:text-slate-300 transition-colors duration-200">Sobre nosotros</a>
+                <a href="motivacion.html" class="text-slate-300 font-medium">Motivación</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="md:hidden hidden bg-slate-800 px-6 py-4 space-y-2" id="mobile-menu">
+            <a href="index.html" class="block hover:text-slate-300 transition-colors duration-200">Inicio</a>
+            <a href="calendario.html" class="block hover:text-slate-300 transition-colors duration-200">Calendario</a>
+            <a href="sobrenosotros.html" class="block hover:text-slate-300 transition-colors duration-200">Sobre nosotros</a>
+            <a href="motivacion.html" class="block text-slate-300 font-medium">Motivación</a>
+        </div>
+    </nav>
+
+    <main class="px-4 sm:px-6 py-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold text-slate-800 mb-6">Nuestra Motivación</h1>
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <div class="space-y-6 text-slate-600 leading-relaxed">
+                    <p class="text-lg">Nuestra motivación para crear UNIDEPOT nace de la propia experiencia como estudiantes de Ingeniería Informática. A lo largo de la carrera, hemos sentido la necesidad de tener un lugar centralizado, fiable y de fácil acceso donde encontrar todos los recursos necesarios para cada asignatura.</p>
+                    
+                    <div class="bg-slate-50 rounded-lg p-6 border-l-4 border-blue-500">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-3">¿Por qué UNIDEPOT?</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                <span>Centralización de recursos académicos dispersos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                <span>Facilitar el acceso a apuntes, ejercicios y exámenes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                <span>Crear una comunidad colaborativa de estudiantes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                <span>Mejorar la experiencia académica en la UGR</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <p>Este proyecto es nuestra respuesta a esa necesidad: un esfuerzo colaborativo para construir el repositorio que nos hubiera gustado tener desde el principio. Buscamos no solo facilitar nuestro propio estudio, sino también crear una herramienta valiosa para las futuras generaciones de estudiantes de la UGR, fomentando un espíritu de comunidad y apoyo mutuo.</p>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-3">Nuestro Compromiso</h3>
+                        <p class="text-slate-700">Nos comprometemos a mantener UNIDEPOT actualizado, accesible y útil para toda la comunidad estudiantil. Creemos en el poder del conocimiento compartido y en la importancia de ayudarnos mutuamente en nuestro camino académico.</p>
+                    </div>
+                    
+                    <p class="text-xl font-semibold text-center text-slate-800 bg-slate-50 rounded-lg p-6">¡Esperamos que UNIDEPOT os ayude a alcanzar vuestros objetivos académicos!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-200 text-slate-600 mt-16 py-8 border-t border-slate-300"> 
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-xs">&copy; <span id="currentYear"></span> UNIDEPOT - Creado por AMO</p> 
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>

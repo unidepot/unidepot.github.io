@@ -1,0 +1,37 @@
+/* Styles for UNIDEPOT site */
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* --- Estilos para Desplegables --- */
+.course-content-list,
+.sub-accordion-group-list,
+.sub-subject-list,
+.subject-options-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, 
+                padding-top 0.3s ease-out, 
+                padding-bottom 0.3s ease-out,
+                opacity 0.3s ease-out;
+    opacity: 0; 
+}
+
+.course-content-list.open { max-height: 8000px; padding-top: 0.25rem; padding-bottom: 0.25rem; opacity: 1;} 
+.sub-accordion-group-list.open { max-height: 6000px; padding-top: 0.125rem; padding-bottom: 0.25rem; opacity: 1;} 
+.sub-subject-list.open { max-height: 4000px; padding-top: 0.25rem; padding-bottom: 0.5rem; background-color: #f8fafc; opacity: 1;} 
+.subject-options-list.open { max-height: 500px; padding-top: 0.125rem; padding-bottom: 0.25rem; background-color: #f1f5f9; opacity: 1;} 
+
+.arrow.rotate-180,
+.sub-arrow.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.course-toggle.open-active { background-color: #e2e8f0; color: #1e293b; }
+.sub-accordion-toggle.open-active { background-color: #f1f5f9; color: #334155; }
+.subject-name-toggle.open-active { background-color: #e0f2fe; color: #0369a1; }
+.subject-name-toggle.open-active .sub-arrow { color: #0369a1; }
+
+.subject-options-list a { transition: background-color 0.2s ease-out, color 0.2s ease-out, padding-left 0.2s ease-out; }
+.subject-options-list a:hover { background-color: #bae6fd; color: #0c4a6e; padding-left: 0.625rem; }

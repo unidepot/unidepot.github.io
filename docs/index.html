@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIDEPOT - Apuntes Ingeniería Informática UGR</title>
+    <title>Inicio - UNIDEPOT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <script>
         tailwind.config = {
             theme: {
@@ -19,175 +20,38 @@
             }
         }
     </script>
-    <style>
-        body {
-            font-family: 'Raleway', sans-serif; 
-        }
-        /* --- Estilos para Desplegables --- */
-        .course-content-list,
-        .sub-accordion-group-list,
-        .sub-subject-list,
-        .subject-options-list {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, 
-                        padding-top 0.3s ease-out, 
-                        padding-bottom 0.3s ease-out,
-                        opacity 0.3s ease-out;
-            opacity: 0; 
-        }
-
-        .course-content-list.open { max-height: 8000px; padding-top: 0.25rem; padding-bottom: 0.25rem; opacity: 1;} 
-        .sub-accordion-group-list.open { max-height: 6000px; padding-top: 0.125rem; padding-bottom: 0.25rem; opacity: 1;} 
-        .sub-subject-list.open { max-height: 4000px; padding-top: 0.25rem; padding-bottom: 0.5rem; background-color: #f8fafc; opacity: 1;} 
-        .subject-options-list.open { max-height: 500px; padding-top: 0.125rem; padding-bottom: 0.25rem; background-color: #f1f5f9; opacity: 1;} 
-
-        .arrow.rotate-180,
-        .sub-arrow.rotate-180 {
-            transform: rotate(180deg);
-        }
-
-        .course-toggle.open-active { background-color: #e2e8f0; color: #1e293b; }
-        .sub-accordion-toggle.open-active { background-color: #f1f5f9; color: #334155; }
-        .subject-name-toggle.open-active { background-color: #e0f2fe; color: #0369a1; }
-        .subject-name-toggle.open-active .sub-arrow { color: #0369a1; }
-
-        .subject-options-list a { transition: background-color 0.2s ease-out, color 0.2s ease-out, padding-left 0.2s ease-out; }
-        .subject-options-list a:hover { background-color: #bae6fd; color: #0c4a6e; padding-left: 0.625rem; }
-
-        .tab-button {
-            padding: 0.75rem 1.25rem; 
-            margin-right: 0.25rem; 
-            border-radius: 0.375rem 0.375rem 0 0; 
-            font-weight: 500; 
-            color: #475569; 
-            background-color: #e2e8f0; 
-            transition: background-color 0.2s ease-out, color 0.2s ease-out;
-            border: 1px solid #cbd5e1; 
-            border-bottom: none; 
-        }
-        .tab-button:hover { background-color: #f1f5f9; color: #334155; }
-        .tab-button.active {
-            background-color: #ffffff; 
-            color: #0f172a; 
-            border-color: #cbd5e1; 
-            border-bottom: 1px solid #ffffff; 
-            position: relative;
-            top: 1px; 
-        }
-        .tab-content {
-            display: none;
-            padding: 1.5rem; 
-            background-color: #ffffff; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 0 0.375rem 0.375rem 0.375rem; 
-        }
-        .tab-content.active { display: block; }
-
-        /* Estilos para las tarjetas de perfil en "Sobre nosotros" */
-        .profile-card {
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-        }
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
-    </style>
 </head>
 <body class="bg-slate-100 text-slate-800">
 
     <nav class="bg-slate-900 text-white shadow-lg"> 
         <div class="container mx-auto px-6 py-3.5 flex justify-between items-center"> 
-            <a href="#" class="text-lg font-semibold hover:text-slate-300 transition-colors duration-200">UNIDEPOT</a> 
+            <a href="index.html" class="text-lg font-semibold hover:text-slate-300 transition-colors duration-200">UNIDEPOT</a> 
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-slate-300 font-medium">Inicio</a>
+                <a href="calendario.html" class="hover:text-slate-300 transition-colors duration-200">Calendario</a>
+                <a href="sobrenosotros.html" class="hover:text-slate-300 transition-colors duration-200">Sobre nosotros</a>
+                <a href="motivacion.html" class="hover:text-slate-300 transition-colors duration-200">Motivación</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="md:hidden hidden bg-slate-800 px-6 py-4 space-y-2" id="mobile-menu">
+            <a href="index.html" class="block text-slate-300 font-medium">Inicio</a>
+            <a href="calendario.html" class="block hover:text-slate-300 transition-colors duration-200">Calendario</a>
+            <a href="sobrenosotros.html" class="block hover:text-slate-300 transition-colors duration-200">Sobre nosotros</a>
+            <a href="motivacion.html" class="block hover:text-slate-300 transition-colors duration-200">Motivación</a>
         </div>
     </nav>
 
     <main class="px-4 sm:px-6 py-8"> 
-        <div id="tab-navigation" class="mb-6">
-            <button class="tab-button active" data-tab="inicio">Inicio</button>
-            <button class="tab-button" data-tab="calendario">Calendario</button>
-            <button class="tab-button" data-tab="sobrenosotros">Sobre nosotros</button>
-            <button class="tab-button" data-tab="motivacion">Motivación</button>
-        </div>
-
-        <div id="inicio-content" class="tab-content active">
-            <p class="text-left text-slate-600 mb-8 text-base leading-relaxed"> 
-                Bienvenido a UNIDEPOT, un repositorio en el que podrás encontrar recursos de las asignaturas relativas al Grado de Ingeniería Informática de la UGR. <br class="hidden sm:block"> Explora los cursos y asignaturas para acceder a apuntes, ejercicios y exámenes.
-            </p>
-            <div id="courses-container" class="space-y-2.5">  
-                <!-- El contenido de los cursos se generará aquí por JavaScript -->
-            </div>
-        </div>
-
-        <div id="calendario-content" class="tab-content">
-            <h2 class="text-xl font-semibold text-slate-700 mb-4">Calendario Académico</h2>
-            <p class="text-slate-600">Aquí se mostrará el calendario académico de la UGR (contenido próximamente).</p>
-        </div>
-
-        <div id="sobrenosotros-content" class="tab-content">
-            <h2 class="text-2xl font-semibold text-slate-800 mb-2">Nuestro Equipo</h2>
-            <p class="text-slate-600 mb-8">Conoce a los colaboradores que hacen posible UNIDEPOT.</p>
-            <!-- Grid de perfiles ajustado a 3 columnas en pantallas medianas y superiores -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Tarjeta de Perfil 1 -->
-                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
-                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e2e8f0/334155?text=AMO" alt="Foto de Perfil">
-                    <h3 class="text-lg font-semibold text-slate-800">AMO</h3>
-                    <p class="text-sm text-slate-500 mb-4">Líder del Proyecto</p>
-                    <a href="https://github.com/unidepot" target="_blank" rel="noopener noreferrer" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
-                </div>
-                <!-- Tarjeta de Perfil 2 -->
-                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
-                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C1" alt="Foto de Perfil">
-                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 1</h3>
-                    <p class="text-sm text-slate-500 mb-4">Especialista en 1º Curso</p>
-                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
-                </div>
-                <!-- Tarjeta de Perfil 3 -->
-                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
-                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C2" alt="Foto de Perfil">
-                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 2</h3>
-                    <p class="text-sm text-slate-500 mb-4">Especialista en 2º Curso</p>
-                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
-                </div>
-                <!-- Tarjeta de Perfil 4 -->
-                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
-                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C3" alt="Foto de Perfil">
-                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 3</h3>
-                    <p class="text-sm text-slate-500 mb-4">Especialista en 3º Curso</p>
-                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
-                </div>
-                <!-- Tarjeta de Perfil 5 -->
-                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
-                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C4" alt="Foto de Perfil">
-                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 4</h3>
-                    <p class="text-sm text-slate-500 mb-4">Especialista en 4º Curso</p>
-                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
-                </div>
-                <!-- Tarjeta de Perfil 6 -->
-                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
-                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C5" alt="Foto de Perfil">
-                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 5</h3>
-                    <p class="text-sm text-slate-500 mb-4">Diseño y UX</p>
-                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
-                </div>
-                 <!-- Tarjeta de Perfil 7 -->
-                <div class="profile-card bg-white rounded-lg shadow-md p-6 text-center">
-                    <img class="w-24 h-24 mx-auto rounded-full mb-4 border-2 border-slate-200" src="https://placehold.co/100x100/e0f2fe/0c4a6e?text=C6" alt="Foto de Perfil">
-                    <h3 class="text-lg font-semibold text-slate-800">Colaborador 6</h3>
-                    <p class="text-sm text-slate-500 mb-4">Documentación</p>
-                    <a href="#" class="inline-block bg-slate-800 text-white text-xs font-bold py-2 px-4 rounded-md hover:bg-slate-700 transition-colors">GitHub</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="motivacion-content" class="tab-content">
-            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Nuestra Motivación</h2>
-            <div class="space-y-4 text-slate-600 leading-relaxed">
-                <p>Nuestra motivación para crear UNIDEPOT nace de la propia experiencia como estudiantes de Ingeniería Informática. A lo largo de la carrera, hemos sentido la necesidad de tener un lugar centralizado, fiable y de fácil acceso donde encontrar todos los recursos necesarios para cada asignatura.</p>
-                <p>Este proyecto es nuestra respuesta a esa necesidad: un esfuerzo colaborativo para construir el repositorio que nos hubiera gustado tener desde el principio. Buscamos no solo facilitar nuestro propio estudio, sino también crear una herramienta valiosa para las futuras generaciones de estudiantes de la UGR, fomentando un espíritu de comunidad y apoyo mutuo.</p>
-                <p>¡Esperamos que UNIDEPOT os ayude a alcanzar vuestros objetivos académicos!</p>
-            </div>
+        <p class="text-left text-slate-600 mb-8 text-base leading-relaxed"> 
+            Bienvenido a UNIDEPOT, un repositorio en el que podrás encontrar recursos de las asignaturas relativas al Grado de Ingeniería Informática de la UGR. <br class="hidden sm:block"> Explora los cursos y asignaturas para acceder a apuntes, ejercicios y exámenes.
+        </p>
+        <div id="courses-container" class="space-y-2.5">  
+            <!-- El contenido de los cursos se generará aquí por JavaScript -->
         </div>
     </main>
 
@@ -197,299 +61,6 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // --- ESTRUCTURA DE DATOS DE LA UNIVERSIDAD (se mantiene igual) ---
-        const universityData = [
-            {
-                courseName: "Primer Curso",
-                semesters: [
-                    {
-                        semesterName: "Primer Semestre",
-                        subjects: [
-                            { name: "Cálculo", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Fundamentos Físicos y Tecnológicos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Fundamentos de Programación", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Fundamentos del Software", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Álgebra Lineal y Estructuras Matemáticas", resources: { apuntes: "https://github.com/unidepot/unidepot.github.io/blob/b3578ee19a1c5896b9662c25e9474eb8ebd016a4/Inform%C3%A1tica/Primero/1%C2%BACuatrimestre/ALEM/Apuntes.pdf?raw=true", ejercicios: "#", examenes: "#" }}
-                        ]
-                    },
-                    {
-                        semesterName: "Segundo Semestre",
-                        subjects: [
-                            { name: "Estadística", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Ingeniería, Empresa y Sociedad", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Lógica y Métodos Discretos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Metodología de la Programación", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Tecnología y Organización de Computadores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                        ]
-                    }
-                ]
-            },
-            {
-                courseName: "Segundo Curso",
-                semesters: [
-                    {
-                        semesterName: "Primer Semestre",
-                        subjects: [
-                            { name: "Estructura de Computadores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Estructura de Datos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Programación y Diseño Orientado a Objetos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Sistemas Concurrentes y Distribuidos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Sistemas Operativos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                        ]
-                    },
-                    {
-                        semesterName: "Segundo Semestre",
-                        subjects: [
-                            { name: "Algorítmica", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Arquitectura de Computadores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Fundamentos de Bases de Datos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Fundamentos de Ingeniería del Software", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Inteligencia Artificial", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                        ]
-                    }
-                ]
-            },
-            {
-                courseName: "Tercer Curso",
-                groups: [ 
-                    {
-                        groupName: "Primer Semestre (Obligatorias Comunes)",
-                        type: "semester", 
-                        subjects: [
-                            { name: "Diseño y Desarrollo de Sistemas de Información", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Fundamentos de Redes", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Informática Gráfica", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Ingeniería de Servidores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                            { name: "Modelos de Computación", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                        ]
-                    },
-                    {
-                        groupName: "Segundo Semestre (Especialidades)",
-                        type: "specialization_container", 
-                        specializations: [
-                            { name: "Esp. Sistemas de Información", subjects: [{ name: "Administración de Bases de Datos", resources:{a:"#",e:"#",x:"#"}}, { name: "Ingeniería de Sistemas de Información", resources:{a:"#",e:"#",x:"#"}}, { name: "Programación Web", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Multidimensionales", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas de Información para Empresas", resources:{a:"#",e:"#",x:"#"}} ] },
-                            { name: "Esp. Computación y Sist. Inteligentes", subjects: [{ name: "Aprendizaje Automático", resources:{a:"#",e:"#",x:"#"}}, { name: "Ingeniería del Conocimiento", resources:{a:"#",e:"#",x:"#"}}, { name: "Metaheurísticas", resources:{a:"#",e:"#",x:"#"}}, { name: "Modelos Avanzados de Computación", resources:{a:"#",e:"#",x:"#"}}, { name: "Técnicas de los Sistemas Inteligentes", resources:{a:"#",e:"#",x:"#"}} ] },
-                            { name: "Esp. Ingeniería de Computadores", subjects: [{ name: "Arquitectura de Sistemas", resources:{a:"#",e:"#",x:"#"}}, { name: "Arquitectura y Computación de Altas Prestaciones", resources:{a:"#",e:"#",x:"#"}}, { name: "Desarrollo de Hardware Digital", resources:{a:"#",e:"#",x:"#"}}, { name: "Diseño de Sistemas Electrónicos", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas con Microprocesadores", resources:{a:"#",e:"#",x:"#"}} ] },
-                            { name: "Esp. Tecnologías de la Información", subjects: [{ name: "Computación Ubicua e Inteligencia Ambiental", resources:{a:"#",e:"#",x:"#"}}, { name: "Servidores Web de Altas Prestaciones", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Multimedia", resources:{a:"#",e:"#",x:"#"}}, { name: "Tecnologías Web", resources:{a:"#",e:"#",x:"#"}}, { name: "Transmisión de Datos y Redes de Computadores", resources:{a:"#",e:"#",x:"#"}} ] },
-                            { name: "Esp. Ingeniería del Software", subjects: [{ name: "Desarrollo de Sistemas Distribuidos", resources:{a:"#",e:"#",x:"#"}}, { name: "Desarrollo de Software", resources:{a:"#",e:"#",x:"#"}}, { name: "Diseño de Interfaces de Usuario", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Gráficos", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas de Información Basados en Web", resources:{a:"#",e:"#",x:"#"}} ] }
-                        ]
-                    }
-                ]
-            },
-            {
-                courseName: "Cuarto Curso",
-                groups: [
-                    {
-                        groupName: "Primer Semestre (Especialidades)",
-                        type: "specialization_container",
-                        specializations: [
-                            { name: "Esp. Sistemas de Información", subjects: [{ name: "Bases de Datos Distribuidas", resources:{a:"#",e:"#",x:"#"}}, { name: "Inteligencia de Negocio", resources:{a:"#",e:"#",x:"#"}}, { name: "Recuperación de Información", resources:{a:"#",e:"#",x:"#"}}] },
-                            { name: "Esp. Ingeniería de Computadores", subjects: [{ name: "Centros de Procesamiento de Datos", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Empotrados", resources:{a:"#",e:"#",x:"#"}}, { name: "Tecnologías de Red", resources:{a:"#",e:"#",x:"#"}}] },
-                            { name: "Esp. Ingeniería del Software", subjects: [{ name: "Desarrollo Basado en Agentes", resources:{a:"#",e:"#",x:"#"}}, { name: "Dirección y Gestión de Proyectos", resources:{a:"#",e:"#",x:"#"}}, { name: "Metodologías de Desarrollo Ágil", resources:{a:"#",e:"#",x:"#"}}] },
-                            { name: "Esp. Tecnologías de la Información", subjects: [{ name: "Desarrollo de Aplicaciones para Internet", resources:{a:"#",e:"#",x:"#"}}, { name: "Infraestructura Virtual", resources:{a:"#",e:"#",x:"#"}}, { name: "Seguridad y Protección de Sistemas Informáticos", resources:{a:"#",e:"#",x:"#"}}] },
-                            { name: "Esp. Computación y Sistemas Inteligentes", subjects: [{ name: "Nuevos Paradigmas de Interacción", resources:{a:"#",e:"#",x:"#"}}, { name: "Procesadores de Lenguajes", resources:{a:"#",e:"#",x:"#"}}, { name: "Programación Técnica y Científica", resources:{a:"#",e:"#",x:"#"}}, { name: "Simulación de Sistemas", resources:{a:"#",e:"#",x:"#"}}, { name: "Teoría de la Información y la Codificación", resources:{a:"#",e:"#",x:"#"}}, { name: "Visión por Computador", resources:{a:"#",e:"#",x:"#"}}] }
-                        ]
-                    },
-                    {
-                        groupName: "Segundo Semestre",
-                        type: "specialization_container", 
-                        specializations: [ 
-                            { name: "TFG y Prácticas", subjects: [{ name: "Proyecto Fin de Grado", resources:{a:"#",e:"#",x:"#"}}, { name: "Prácticas de Empresa", resources:{a:"#",e:"#",x:"#"}}] },
-                            { name: "Optativas Generales", subjects: [{ name: "Creación de Empresas y Gestión Emprendedora", resources:{a:"#",e:"#",x:"#"}}, { name: "Derecho Informático", resources:{a:"#",e:"#",x:"#"}}, { name: "Ética Informática y Sociedad de la Información", resources:{a:"#",e:"#",x:"#"}}] },
-                            { name: "Optativas (Esp. Computación y Sist. Inteligentes)", subjects: [{ name: "Criptografía y Computación", resources:{a:"#",e:"#",x:"#"}}, { name: "Programación Lúdica", resources:{a:"#",e:"#",x:"#"}}, { name: "Robótica Industrial", resources:{a:"#",e:"#",x:"#"}}] }
-                        ]
-                    }
-                ]
-            }
-        ];
-
-        const coursesContainer = document.getElementById('courses-container');
-
-        // --- FUNCIONES PARA GENERAR HTML DINÁMICAMENTE ---
-        function createSubjectAccordion(subjectData) {
-            const li = document.createElement('li');
-            li.className = 'subject-accordion-item border-t border-slate-200 first:border-t-0'; 
-
-            const button = document.createElement('button');
-            button.className = 'subject-name-toggle flex justify-between items-center w-full py-1.5 px-1.5 text-left font-medium text-sm text-sky-700 hover:bg-sky-50 transition-colors duration-150 focus:outline-none'; 
-            button.innerHTML = `<span>${subjectData.name}</span><span class="sub-arrow transform transition-transform duration-300 text-sky-600 text-xs">▼</span>`; 
-
-            const optionsDiv = document.createElement('div');
-            optionsDiv.className = 'subject-options-list ml-2 pl-1.5 pr-1 border-l border-slate-200'; 
-            const optionsUl = document.createElement('ul');
-            optionsUl.className = 'space-y-px py-1'; 
-            
-            const resources = subjectData.resources || {};
-            const resourceLinks = [
-                { label: 'Apuntes', url: resources.apuntes || '#' },
-                { label: 'Ejercicios', url: resources.ejercicios || '#' },
-                { label: 'Exámenes', url: resources.examenes || '#' }
-            ];
-
-            resourceLinks.forEach(linkInfo => {
-                const optionLi = document.createElement('li');
-                const optionLink = document.createElement('a');
-                optionLink.href = linkInfo.url;
-                optionLink.target = "_blank"; 
-                optionLink.rel = "noopener noreferrer"; 
-                optionLink.className = 'block py-0.5 px-1.5 rounded-md text-slate-500 hover:text-sky-700 hover:bg-sky-100 transition-all duration-150 text-xs'; 
-                optionLink.textContent = linkInfo.label;
-                optionLi.appendChild(optionLink);
-                optionsUl.appendChild(optionLi);
-            });
-            optionsDiv.appendChild(optionsUl);
-
-            li.appendChild(button);
-            li.appendChild(optionsDiv);
-            return li;
-        }
-
-        function createSubjectsList(subjectsArray) {
-            const ul = document.createElement('ul');
-            ul.className = 'space-y-0 pt-0.5 pb-0.5'; 
-            subjectsArray.forEach(subjectData => { 
-                ul.appendChild(createSubjectAccordion(subjectData));
-            });
-            return ul;
-        }
-        
-        function createSubAccordionItem(title, actualContentElement, isSpecializationGroupTitle = false, isContainerOfMoreAccordions = false) {
-            const itemDiv = document.createElement('div'); 
-            itemDiv.className = `sub-accordion-item border-t border-slate-200 ${isSpecializationGroupTitle ? 'pt-0.5' : ''}`; 
-
-            const button = document.createElement('button');
-            const titlePadding = isSpecializationGroupTitle ? 'py-1.5 px-1.5' : 'py-2 px-1.5'; 
-            const titleFontSize = isSpecializationGroupTitle ? 'text-xs font-medium' : 'text-sm font-semibold'; 
-            const titleTextColor = isSpecializationGroupTitle ? 'text-slate-500' : 'text-slate-600';
-            const arrowColor = isSpecializationGroupTitle ? 'text-slate-400' : 'text-slate-500';
-            const arrowSize = isSpecializationGroupTitle ? 'text-xs' : 'text-xs'; 
-
-            button.className = `sub-accordion-toggle flex justify-between items-center w-full ${titlePadding} text-left ${titleFontSize} ${titleTextColor} hover:bg-slate-100 transition-colors duration-150 focus:outline-none`;
-            button.innerHTML = `<span>${title}</span><span class="sub-arrow transform transition-transform duration-300 ${arrowColor} ${arrowSize}">▼</span>`;
-            
-            const listContainerDiv = document.createElement('div'); 
-            if (isContainerOfMoreAccordions) {
-                listContainerDiv.className = 'sub-accordion-group-list';
-            } else {
-                listContainerDiv.className = 'sub-subject-list px-1' + (isSpecializationGroupTitle ? ' ml-1.5' : ''); 
-            }
-
-            listContainerDiv.appendChild(actualContentElement); 
-
-            itemDiv.appendChild(button);
-            itemDiv.appendChild(listContainerDiv);
-            return itemDiv;
-        }
-        
-        // Función principal para construir el contenido de los cursos
-        function buildCoursesContent() {
-             if (!coursesContainer) return;
-             coursesContainer.innerHTML = '';
-             universityData.forEach(course => {
-                const courseItemDiv = document.createElement('div');
-                courseItemDiv.className = 'course-item bg-white rounded-md shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden'; 
-
-                const courseButton = document.createElement('button');
-                courseButton.className = 'course-toggle flex justify-between items-center w-full p-3 text-left font-semibold text-md text-slate-700 hover:bg-slate-50 transition-colors duration-150 focus:outline-none'; 
-                courseButton.innerHTML = `<span>${course.courseName}</span><span class="arrow transform transition-transform duration-300 text-slate-500 text-sm">▼</span>`; 
-
-                const courseContentDiv = document.createElement('div');
-                courseContentDiv.className = 'course-content-list px-1.5'; 
-                
-                const subAccordionContainerForCourse = document.createElement('div'); 
-                subAccordionContainerForCourse.className = 'space-y-0.5 py-1 sub-accordion-container'; 
-
-                if (course.semesters) { 
-                    course.semesters.forEach(semester => {
-                        const subjectsUl = createSubjectsList(semester.subjects); 
-                        subAccordionContainerForCourse.appendChild(createSubAccordionItem(semester.semesterName, subjectsUl, false, false));
-                    });
-                } else if (course.groups) { 
-                    course.groups.forEach(group => {
-                        if (group.type === "semester") { 
-                            const subjectsUl = createSubjectsList(group.subjects); 
-                            subAccordionContainerForCourse.appendChild(createSubAccordionItem(group.groupName, subjectsUl, false, false));
-                        } else if (group.type === "specialization_container") {
-                            const specializationsButtonContainerDiv = document.createElement('div'); 
-                            specializationsButtonContainerDiv.className = 'space-y-0 sub-accordion-container'; 
-
-                            group.specializations.forEach(spec => {
-                                const subjectsUlForSpec = createSubjectsList(spec.subjects); 
-                                specializationsButtonContainerDiv.appendChild(createSubAccordionItem(spec.name, subjectsUlForSpec, false, true, false));
-                            });
-                            subAccordionContainerForCourse.appendChild(createSubAccordionItem(group.groupName, specializationsButtonContainerDiv, false, false, true));
-                        }
-                    });
-                }
-                courseContentDiv.appendChild(subAccordionContainerForCourse);
-                courseItemDiv.appendChild(courseButton);
-                courseItemDiv.appendChild(courseContentDiv);
-                coursesContainer.appendChild(courseItemDiv);
-            });
-        }
-        
-
-        // --- SCRIPT PARA PESTAÑAS Y DESPLEGABLES ---
-        const mainContentArea = document.querySelector('main');
-
-        mainContentArea.addEventListener('click', function(e) {
-            const tabButton = e.target.closest('.tab-button');
-            if (tabButton) {
-                const targetTab = tabButton.dataset.tab;
-                
-                mainContentArea.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                tabButton.classList.add('active');
-
-                mainContentArea.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.toggle('active', content.id === `${targetTab}-content`);
-                });
-                return;
-            }
-            
-            const toggleButton = e.target.closest('.course-toggle, .sub-accordion-toggle, .subject-name-toggle');
-            if (toggleButton) {
-                const listElement = toggleButton.nextElementSibling;
-                const arrowElement = toggleButton.querySelector('.arrow') || toggleButton.querySelector('.sub-arrow');
-                const parentElement = toggleButton.parentElement; 
-                const parentContainer = parentElement.parentElement; 
-                const isAlreadyOpen = listElement.classList.contains('open');
-
-                if (parentContainer) {
-                    const siblingItems = Array.from(parentContainer.children);
-                    siblingItems.forEach(siblingItem => {
-                        if (siblingItem !== parentElement) { 
-                            const siblingToggle = siblingItem.querySelector('.course-toggle, .sub-accordion-toggle, .subject-name-toggle');
-                            if (siblingToggle) {
-                                const siblingList = siblingToggle.nextElementSibling;
-                                if (siblingList && siblingList.classList.contains('open')) {
-                                    siblingList.classList.remove('open');
-                                    siblingToggle.classList.remove('open-active'); 
-                                    const siblingArrow = siblingToggle.querySelector('.arrow') || siblingToggle.querySelector('.sub-arrow');
-                                    if (siblingArrow) {
-                                        siblingArrow.classList.remove('rotate-180');
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-                
-                if (listElement) {
-                    listElement.classList.toggle('open', !isAlreadyOpen);
-                    toggleButton.classList.toggle('open-active', !isAlreadyOpen); 
-                }
-                if (arrowElement) {
-                    arrowElement.classList.toggle('rotate-180', !isAlreadyOpen);
-                }
-            }
-        });
-
-        buildCoursesContent();
-
-    </script>
-
+    <script src="js/scripts.js"></script>
 </body>
 </html>
