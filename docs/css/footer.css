@@ -1,0 +1,27 @@
+#main-footer {
+  width: 100%;
+  background: #0a0a0a;
+  color: #fafafa;
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  border-top: 1px solid #262626;
+  z-index: 10;
+}
+
+#main-footer a {
+  color: #fafafa;
+  text-decoration: underline;
+}
+
+#main-footer a:hover {
+  color: #e2e8f0;
+  text-decoration: underline;
+}
+
+body {
+  padding-bottom: 3rem;
+}
