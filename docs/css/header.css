@@ -1,9 +1,8 @@
 #main-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;         /* Centra verticalmente los hijos */
+  justify-content: space-between; /* Deja el h1 a la izquierda y nav a la derecha */
   flex-wrap: wrap;
-  position: relative;
   color: #fafafa;
   font-family: 'Ubuntu', sans-serif;
   background: #0a0a0a;
@@ -15,9 +14,8 @@
 
 #main-header h1 {
   margin: 0;
-  text-align: center;
-  flex: 1 1 100%;
-  order: 1;
+  text-align: left;
+  flex: 0 1 auto; /* Solo ocupa el espacio necesario */
 }
 
 #main-header h1 a {
@@ -36,8 +34,8 @@
 .nav-links {
   display: flex;
   gap: 1rem;
+  align-items: center; /* Alinea verticalmente los botones */
   flex: 0 1 auto;
-  order: 2;
 }
 
 .nav-btn {
