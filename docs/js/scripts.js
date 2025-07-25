@@ -1,161 +1,181 @@
-const universityData = [
+// TOGGLE SIMPLE - MÍNIMO CÓDIGO POSIBLE
+const toggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Aplicar tema guardado
+const saved = localStorage.getItem('theme');
+if (saved === 'light') {
+    body.classList.add('light-theme');
+}
+
+// Click en toggle
+toggle.onclick = function() {
+    body.classList.toggle('light-theme');
+    localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+};
+
+// DATOS DEL ACORDEÓN
+const cursos = [
     {
-        courseName: "Primer Curso",
-        semesters: [
+        nombre: "Primer Curso",
+        semestres: [
             {
-                semesterName: "Primer Semestre",
-                subjects: [
-                    { name: "Cálculo", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Fundamentos Físicos y Tecnológicos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Fundamentos de Programación", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Fundamentos del Software", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Álgebra Lineal y Estructuras Matemáticas", resources: { apuntes: "https://github.com/unidepot/unidepot.github.io/blob/b3578ee19a1c5896b9662c25e9474eb8ebd016a4/Inform%C3%A1tica/Primero/1%C2%BACuatrimestre/ALEM/Apuntes.pdf?raw=true", ejercicios: "#", examenes: "#" }}
-                ]
+                nombre: "Primer Semestre",
+                asignaturas: ["Cálculo", "Fundamentos Físicos y Tecnológicos", "Fundamentos de Programación", "Fundamentos del Software", "Álgebra Lineal y Estructuras Matemáticas"]
             },
             {
-                semesterName: "Segundo Semestre",
-                subjects: [
-                    { name: "Estadística", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Ingeniería, Empresa y Sociedad", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Lógica y Métodos Discretos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Metodología de la Programación", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Tecnología y Organización de Computadores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                ]
+                nombre: "Segundo Semestre", 
+                asignaturas: ["Estadística", "Ingeniería, Empresa y Sociedad", "Lógica y Métodos Discretos", "Metodología de la Programación", "Tecnología y Organización de Computadores"]
             }
         ]
     },
     {
-        courseName: "Segundo Curso",
-        semesters: [
+        nombre: "Segundo Curso",
+        semestres: [
             {
-                semesterName: "Primer Semestre",
-                subjects: [
-                    { name: "Estructura de Computadores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Estructura de Datos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Programación y Diseño Orientado a Objetos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Sistemas Concurrentes y Distribuidos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Sistemas Operativos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                ]
+                nombre: "Primer Semestre",
+                asignaturas: ["Estructura de Computadores", "Estructura de Datos", "Programación y Diseño Orientado a Objetos", "Sistemas Concurrentes y Distribuidos", "Sistemas Operativos"]
             },
             {
-                semesterName: "Segundo Semestre",
-                subjects: [
-                    { name: "Algorítmica", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Arquitectura de Computadores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Fundamentos de Bases de Datos", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Fundamentos de Ingeniería del Software", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Inteligencia Artificial", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                ]
+                nombre: "Segundo Semestre",
+                asignaturas: ["Algorítmica", "Arquitectura de Computadores", "Fundamentos de Bases de Datos", "Fundamentos de Ingeniería del Software", "Inteligencia Artificial"]
             }
         ]
     },
     {
-        courseName: "Tercer Curso",
-        groups: [ 
+        nombre: "Tercer Curso",
+        semestres: [
             {
-                groupName: "Primer Semestre (Obligatorias Comunes)",
-                type: "semester", 
-                subjects: [
-                    { name: "Diseño y Desarrollo de Sistemas de Información", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Fundamentos de Redes", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Informática Gráfica", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Ingeniería de Servidores", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }},
-                    { name: "Modelos de Computación", resources: { apuntes: "#", ejercicios: "#", examenes: "#" }}
-                ]
+                nombre: "Primer Semestre",
+                asignaturas: ["Diseño y Análisis de Algoritmos", "Sistemas de Información", "Redes de Computadores", "Programación de Sistemas", "Seguridad en Sistemas Informáticos"]
             },
             {
-                groupName: "Segundo Semestre (Especialidades)",
-                type: "specialization_container", 
-                specializations: [
-                    { name: "Esp. Sistemas de Información", subjects: [{ name: "Administración de Bases de Datos", resources:{a:"#",e:"#",x:"#"}}, { name: "Ingeniería de Sistemas de Información", resources:{a:"#",e:"#",x:"#"}}, { name: "Programación Web", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Multidimensionales", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas de Información para Empresas", resources:{a:"#",e:"#",x:"#"}} ] },
-                    { name: "Esp. Computación y Sist. Inteligentes", subjects: [{ name: "Aprendizaje Automático", resources:{a:"#",e:"#",x:"#"}}, { name: "Ingeniería del Conocimiento", resources:{a:"#",e:"#",x:"#"}}, { name: "Metaheurísticas", resources:{a:"#",e:"#",x:"#"}}, { name: "Modelos Avanzados de Computación", resources:{a:"#",e:"#",x:"#"}}, { name: "Técnicas de los Sistemas Inteligentes", resources:{a:"#",e:"#",x:"#"}} ] },
-                    { name: "Esp. Ingeniería de Computadores", subjects: [{ name: "Arquitectura de Sistemas", resources:{a:"#",e:"#",x:"#"}}, { name: "Arquitectura y Computación de Altas Prestaciones", resources:{a:"#",e:"#",x:"#"}}, { name: "Desarrollo de Hardware Digital", resources:{a:"#",e:"#",x:"#"}}, { name: "Diseño de Sistemas Electrónicos", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas con Microprocesadores", resources:{a:"#",e:"#",x:"#"}} ] },
-                    { name: "Esp. Tecnologías de la Información", subjects: [{ name: "Computación Ubicua e Inteligencia Ambiental", resources:{a:"#",e:"#",x:"#"}}, { name: "Servidores Web de Altas Prestaciones", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Multimedia", resources:{a:"#",e:"#",x:"#"}}, { name: "Tecnologías Web", resources:{a:"#",e:"#",x:"#"}}, { name: "Transmisión de Datos y Redes de Computadores", resources:{a:"#",e:"#",x:"#"}} ] },
-                    { name: "Esp. Ingeniería del Software", subjects: [{ name: "Desarrollo de Sistemas Distribuidos", resources:{a:"#",e:"#",x:"#"}}, { name: "Desarrollo de Software", resources:{a:"#",e:"#",x:"#"}}, { name: "Diseño de Interfaces de Usuario", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Gráficos", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas de Información Basados en Web", resources:{a:"#",e:"#",x:"#"}} ] }
-                ]
+                nombre: "Segundo Semestre",
+                asignaturas: ["Interfaces de Usuario", "Gestión de Proyectos Informáticos", "Sistemas Web", "Computación Paralela", "Minería de Datos"]
             }
         ]
     },
     {
-        courseName: "Cuarto Curso",
-        groups: [
+        nombre: "Cuarto Curso",
+        semestres: [
             {
-                groupName: "Primer Semestre (Especialidades)",
-                type: "specialization_container",
-                specializations: [
-                    { name: "Esp. Sistemas de Información", subjects: [{ name: "Bases de Datos Distribuidas", resources:{a:"#",e:"#",x:"#"}}, { name: "Inteligencia de Negocio", resources:{a:"#",e:"#",x:"#"}}, { name: "Recuperación de Información", resources:{a:"#",e:"#",x:"#"}}] },
-                    { name: "Esp. Ingeniería de Computadores", subjects: [{ name: "Centros de Procesamiento de Datos", resources:{a:"#",e:"#",x:"#"}}, { name: "Sistemas Empotrados", resources:{a:"#",e:"#",x:"#"}}, { name: "Tecnologías de Red", resources:{a:"#",e:"#",x:"#"}}] },
-                    { name: "Esp. Ingeniería del Software", subjects: [{ name: "Desarrollo Basado en Agentes", resources:{a:"#",e:"#",x:"#"}}, { name: "Dirección y Gestión de Proyectos", resources:{a:"#",e:"#",x:"#"}}, { name: "Metodologías de Desarrollo Ágil", resources:{a:"#",e:"#",x:"#"}}] },
-                    { name: "Esp. Tecnologías de la Información", subjects: [{ name: "Desarrollo de Aplicaciones para Internet", resources:{a:"#",e:"#",x:"#"}}, { name: "Infraestructura Virtual", resources:{a:"#",e:"#",x:"#"}}, { name: "Seguridad y Protección de Sistemas Informáticos", resources:{a:"#",e:"#",x:"#"}}] },
-                    { name: "Esp. Computación y Sistemas Inteligentes", subjects: [{ name: "Nuevos Paradigmas de Interacción", resources:{a:"#",e:"#",x:"#"}}, { name: "Procesadores de Lenguajes", resources:{a:"#",e:"#",x:"#"}}, { name: "Programación Técnica y Científica", resources:{a:"#",e:"#",x:"#"}}, { name: "Simulación de Sistemas", resources:{a:"#",e:"#",x:"#"}}, { name: "Teoría de la Información y la Codificación", resources:{a:"#",e:"#",x:"#"}}, { name: "Visión por Computador", resources:{a:"#",e:"#",x:"#"}}] }
-                ]
-            },
-            {
-                groupName: "Segundo Semestre",
-                type: "specialization_container", 
-                specializations: [ 
-                    { name: "TFG y Prácticas", subjects: [{ name: "Proyecto Fin de Grado", resources:{a:"#",e:"#",x:"#"}}, { name: "Prácticas de Empresa", resources:{a:"#",e:"#",x:"#"}}] },
-                    { name: "Optativas Generales", subjects: [{ name: "Creación de Empresas y Gestión Emprendedora", resources:{a:"#",e:"#",x:"#"}}, { name: "Derecho Informático", resources:{a:"#",e:"#",x:"#"}}, { name: "Ética Informática y Sociedad de la Información", resources:{a:"#",e:"#",x:"#"}}] },
-                    { name: "Optativas (Esp. Computación y Sist. Inteligentes)", subjects: [{ name: "Criptografía y Computación", resources:{a:"#",e:"#",x:"#"}}, { name: "Programación Lúdica", resources:{a:"#",e:"#",x:"#"}}, { name: "Robótica Industrial", resources:{a:"#",e:"#",x:"#"}}] }
-                ]
+                nombre: "Primer Semestre",
+                asignaturas: ["Arquitecturas Software", "Métodos Formales", "Verificación y Validación", "Sistemas Distribuidos Avanzados", "Computación en la Nube", "Tolerancia a Fallos"]
             }
         ]
     }
 ];
 
-const container = document.getElementById('accordion-container');
+// GENERAR ACORDEÓN
+function generarAcordeon() {
+    const container = document.getElementById('accordion-container');
+    let html = '';
+    
+    cursos.forEach(curso => {
+        html += `<details>
+            <summary>${curso.nombre}</summary>`;
+        
+        curso.semestres.forEach(semestre => {
+            html += `<details>
+                <summary>${semestre.nombre}</summary>`;
+            
+            semestre.asignaturas.forEach(asignatura => {
+                html += `<div class="subject-item" onclick="mostrarAsignatura('${asignatura}')">
+                    <span class="subject-name">${asignatura}</span>
+                </div>`;
+            });
+            
+            html += '</details>';
+        });
+        
+        html += '</details>';
+    });
+    
+    container.innerHTML = html;
+}
 
-container.innerHTML = universityData.map(curso => {
-  const cursoNombre = curso.courseName || curso.nombre;
-  const bloques = curso.semesters || curso.groups;
+// MOSTRAR ASIGNATURA EN PANEL DERECHO
+function mostrarAsignatura(nombre) {
+    const panel = document.getElementById('resources-panel');
+    panel.innerHTML = `
+        <div class="subject-resources">
+            <div class="subject-header">
+                <h2 class="subject-title">${nombre}</h2>
+                <button class="close-btn" onclick="cerrarAsignatura()">×</button>
+            </div>
+            <p style="color: #9ca3af; margin-bottom: 2rem;">Selecciona el tipo de recurso:</p>
+            
+            <div class="resource-type-grid">
+                <div class="resource-type-btn" onclick="mostrarRecursos('${nombre}', 'Apuntes')">
+                    <span class="resource-type-icon">📚</span>
+                    <span>Apuntes</span>
+                </div>
+                <div class="resource-type-btn" onclick="mostrarRecursos('${nombre}', 'Ejercicios')">
+                    <span class="resource-type-icon">✏️</span>
+                    <span>Ejercicios</span>
+                </div>
+                <div class="resource-type-btn" onclick="mostrarRecursos('${nombre}', 'Exámenes')">
+                    <span class="resource-type-icon">📝</span>
+                    <span>Exámenes</span>
+                </div>
+            </div>
+            
+            <div id="resource-options"></div>
+        </div>
+    `;
+}
 
-  return `
-    <details>
-      <summary>${cursoNombre}</summary>
-      ${bloques.map(bloque => {
-        const bloqueNombre = bloque.semesterName || bloque.groupName || bloque.nombre;
-        if (bloque.subjects) {
-          return `
-            <details>
-              <summary>${bloqueNombre}</summary>
-              ${bloque.subjects.map(asig => `
-                <details>
-                  <summary>${asig.name}</summary>
-                  <p>
-                    <a href="${asig.resources.apuntes || asig.resources.a}">Apuntes</a> |
-                    <a href="${asig.resources.ejercicios || asig.resources.e}">Ejercicios</a> |
-                    <a href="${asig.resources.examenes || asig.resources.x}">Exámenes</a>
-                  </p>
-                </details>
-              `).join('')}
-            </details>
-          `;
-        }
-        if (bloque.specializations || bloque.specializations) {
-          const especialidades = bloque.specializations || bloque.specializations;
-          return `
-            <details>
-              <summary>${bloqueNombre}</summary>
-              ${especialidades.map(esp => `
-                <details>
-                  <summary>${esp.name}</summary>
-                  ${esp.subjects.map(asig => `
-                    <details>
-                      <summary>${asig.name}</summary>
-                      <p>
-                        <a href="${asig.resources.apuntes || asig.resources.a}">Apuntes</a> |
-                        <a href="${asig.resources.ejercicios || asig.resources.e}">Ejercicios</a> |
-                        <a href="${asig.resources.examenes || asig.resources.x}">Exámenes</a>
-                      </p>
-                    </details>
-                  `).join('')}
-                </details>
-              `).join('')}
-            </details>
-          `;
-        }
-        return '';
-      }).join('')}
-    </details>
-  `;
-}).join('');
+// MOSTRAR RECURSOS ESPECÍFICOS
+function mostrarRecursos(asignatura, tipo) {
+    // Quitar active de todos
+    document.querySelectorAll('.resource-type-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Añadir active al clickeado
+    event.target.closest('.resource-type-btn').classList.add('active');
+    
+    const opciones = document.getElementById('resource-options');
+    const iconos = {'Apuntes': '📚', 'Ejercicios': '✏️', 'Exámenes': '📝'};
+    
+    opciones.innerHTML = `
+        <h3 style="color: #38bdf8; margin-bottom: 1rem;">
+            ${iconos[tipo]} ${tipo} - ${asignatura}
+        </h3>
+        <div class="resource-list">
+            <div class="resource-option">
+                <h4>${tipo} Principal</h4>
+                <p>Recurso principal de ${tipo.toLowerCase()} para ${asignatura}.</p>
+                <a href="#" class="resource-link">Próximamente disponible</a>
+            </div>
+            <div class="resource-option">
+                <h4>${tipo} Complementario</h4>
+                <p>Material adicional de ${tipo.toLowerCase()} para complementar el estudio.</p>
+                <a href="#" class="resource-link">Próximamente disponible</a>
+            </div>
+        </div>
+    `;
+}
+
+// CERRAR ASIGNATURA
+function cerrarAsignatura() {
+    const panel = document.getElementById('resources-panel');
+    panel.innerHTML = `
+        <div class="panel-placeholder">
+            <div class="disclaimer-box">
+                <h4>📋 Disclaimer</h4>
+                <p>Todos los contenidos de aquí son apuntes y recursos públicos usados y desarrollados por alumnos del grado de informática de la UGR. Por ello, si existe la problemática entre un profesor y nuestros recursos, nos vemos totalmente abiertos a retirar los apuntes de inmediato, siempre que esos apuntes tengan claramente autoría en dicho profesor.</p>
+            </div>
+            
+            <div class="selection-message">
+                <h3>Selecciona una asignatura</h3>
+                <p>Elige una asignatura del menú de la izquierda para ver los recursos de informática disponibles.</p>
+            </div>
+        </div>
+    `;
+}
+
+// INICIALIZAR CUANDO CARGUE LA PÁGINA
+window.onload = function() {
+    generarAcordeon();
+};
