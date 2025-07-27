@@ -7,25 +7,349 @@
     position: relative;
 }
 
+/* Estilos para modo claro aplicados al body */
+body.light-theme#default_body {
+    background-color: #ffffff !important;
+}
+
 h1 {
     color: #fafafa;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
+/* Asegurar que el h1 en modo claro sea visible */
+body.light-theme h1 {
+    color: #0a0a0a !important;
+}
+
+/* Estilos para el contenido principal */
+main {
+    padding: 1rem 0 4rem 0;
+    min-height: calc(100vh - 120px);
+    margin: 0;
+}
+
+/* Estilos para la sección de bienvenida */
+.welcome-section {
+    max-width: 100%;
+    margin: 2rem 0 2rem 0;
+    padding: 1.5rem;
+    background-color: #171717;
+    border-radius: 8px;
+    border: 1px solid #262626;
+}
+
+.welcome-section h2 {
+    color: #fafafa;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.welcome-section p {
+    color: #e5e5e5;
+    font-family: 'Ubuntu', monospace;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Estilos para modo claro - sección de bienvenida */
+body.light-theme .welcome-section {
+    background-color: #f8f9fa;
+    border: 1px solid #e5e5e5;
+}
+
+body.light-theme .welcome-section h2 {
+    color: #0a0a0a;
+}
+
+body.light-theme .welcome-section p {
+    color: #374151;
+}
+
+/* Layout de dos columnas */
+.content-layout {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    min-height: 600px;
+}
+
 #accordion-container {
     font-family: 'Ubuntu', monospace;
-    max-width: 800px;
+    flex: 1;
+    max-width: 500px;
     background-color: #171717;
     color: #fafafa;
-    margin: 0 auto;
-    padding: 1rem;
+    margin: 0;
+    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-height: 600px;
+}
+
+/* Panel de recursos */
+#resources-panel {
+    flex: 1;
+    background-color: #171717;
+    color: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #262626;
+    padding: 1.5rem;
+    min-height: 600px;
+}
+
+.panel-placeholder {
+    text-align: center;
+    padding: 2rem;
+    color: #9ca3af;
+}
+
+.panel-placeholder h3 {
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.panel-placeholder p {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* Estilos para cuando se selecciona una asignatura */
+.subject-resources {
+    text-align: left;
+}
+
+.subject-title {
+    color: #38bdf8;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #262626;
+    padding-bottom: 0.5rem;
+    margin: 0;
+}
+
+/* Header de la asignatura con botón de cerrar */
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #262626;
+    padding-bottom: 0.5rem;
+}
+
+.close-btn {
+    background: transparent;
+    border: 1px solid #6b7280;
+    border-radius: 4px;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-family: monospace;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    background: #6b7280;
+    color: #ffffff;
+    border-color: #6b7280;
+}
+
+/* Estilos para modo claro - botón cerrar */
+body.light-theme .close-btn {
+    border-color: #9ca3af;
+    color: #9ca3af;
+}
+
+body.light-theme .close-btn:hover {
+    background: #9ca3af;
+    color: #ffffff;
+    border-color: #9ca3af;
+}
+
+body.light-theme .subject-header {
+    border-bottom-color: #e5e5e5;
+}
+
+.resource-type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.resource-type-btn {
+    background: #222;
+    border: 2px solid #262626;
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: #fafafa;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.resource-type-btn:hover {
+    border-color: #38bdf8;
+    background: #262626;
+    transform: translateY(-2px);
+}
+
+.resource-type-btn.active {
+    border-color: #38bdf8;
+    background: #1e293b;
+}
+
+.resource-type-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.resource-options {
+    margin-top: 1rem;
+}
+
+.resource-option {
+    background: #222;
+    border: 1px solid #262626;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.resource-option:hover {
+    border-color: #38bdf8;
+}
+
+.resource-option h4 {
+    color: #38bdf8;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.resource-option p {
+    color: #d1d5db;
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.resource-link {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.resource-link:hover {
+    color: #0ea5e9;
+    text-decoration: underline;
+}
+
+/* Estilos para modo claro - panel de recursos */
+body.light-theme #resources-panel {
+    background-color: #f8f9fa;
+    border-color: #e5e5e5;
+    color: #0a0a0a;
+}
+
+body.light-theme .panel-placeholder h3 {
+    color: #6b7280;
+}
+
+body.light-theme .panel-placeholder p {
+    color: #9ca3af;
+}
+
+body.light-theme .subject-title {
+    color: #0ea5e9;
+    border-bottom-color: #e5e5e5;
+}
+
+body.light-theme .resource-type-btn {
+    background: #ffffff;
+    border-color: #e5e5e5;
+    color: #0a0a0a;
+}
+
+body.light-theme .resource-type-btn:hover {
+    border-color: #0ea5e9;
+    background: #f8f9fa;
+}
+
+body.light-theme .resource-type-btn.active {
+    border-color: #0ea5e9;
+    background: #e0f2fe;
+}
+
+body.light-theme .resource-option {
+    background: #ffffff;
+    border-color: #e5e5e5;
+}
+
+body.light-theme .resource-option:hover {
+    border-color: #0ea5e9;
+}
+
+body.light-theme .resource-option h4 {
+    color: #0ea5e9;
+}
+
+body.light-theme .resource-option p {
+    color: #6b7280;
+}
+
+body.light-theme .resource-link {
+    color: #0ea5e9;
+}
+
+body.light-theme .resource-link:hover {
+    color: #0284c7;
+}
+
+/* Responsive design para el layout de dos columnas */
+@media (max-width: 768px) {
+    .content-layout {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    #accordion-container {
+        max-width: 100%;
+    }
+    
+    .resource-type-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mejoras adicionales para el layout */
+.content-layout {
+    min-height: 400px;
+}
+
+#resources-panel {
+    position: relative;
+    overflow-y: auto;
+    max-height: 800px;
 }
 
 #accordion-container > details {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     border-radius: 6px;
     background: #222;
     border: 1px solid #262626;
@@ -35,37 +359,569 @@ h1 {
 #accordion-container summary {
     cursor: pointer;
     font-weight: bold;
-    padding: 0.75rem 1rem;
+    padding: 1rem 1.5rem;
     background: #222;
     color: #fafafa;
     border-bottom: 1px solid #262626;
     outline: none;
     transition: background 0.2s;
+    font-size: 1.1rem;
 }
 
 #accordion-container summary:hover {
     background: #262626;
 }
 
-#accordion-container details > details,
 #accordion-container details > details > details {
     background: #222;
-    margin: 0.5rem 0 0.5rem 1rem;
+    margin: 0.75rem 0 0.75rem 1.5rem;
+}
+
+/* Estilos para los elementos de asignatura clickeables */
+.subject-item {
+    background: #222;
+    border: 1px solid #262626;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0 0.5rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.subject-item:hover {
+    background: #262626;
+    border-color: #38bdf8;
+    transform: translateX(4px);
+}
+
+.subject-name {
+    color: #fafafa;
+    font-weight: 500;
+    display: block;
+}
+
+/* Estilos para modo claro - elementos de asignatura */
+body.light-theme .subject-item {
+    background: #ffffff;
+    border-color: #e5e5e5;
+}
+
+body.light-theme .subject-item:hover {
+    background: #f8f9fa;
+    border-color: #0ea5e9;
+}
+
+body.light-theme .subject-name {
+    color: #0a0a0a;
 }
 
 #accordion-container p {
-    margin: 1rem 0 0.5rem 1rem;
-    font-size: 1rem;
+    margin: 1.25rem 0 0.75rem 1.5rem;
+    font-size: 1.05rem;
     color: #e5e5e5;
+    padding: 0.5rem 0;
 }
 
 #accordion-container a {
     color: #38bdf8;
     text-decoration: underline;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.05rem;
 }
 
 #accordion-container a:hover {
     color: #0ea5e9;
     text-decoration: none;
+}
+
+/* Estilos para modo claro */
+body.light-theme {
+    background-color: #ffffff !important;
+}
+
+body.light-theme#default_body {
+    background-color: #ffffff !important;
+}
+
+/* Asegurar que el html también tenga fondo blanco en modo claro */
+html:has(body.light-theme) {
+    background-color: #ffffff !important;
+}
+
+body.light-theme h1 {
+    color: #0a0a0a !important;
+}
+
+body.light-theme #accordion-container {
+    background-color: #f8f9fa;
+    color: #0a0a0a;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme #accordion-container > details {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+}
+
+body.light-theme #accordion-container summary {
+    background: #ffffff;
+    color: #0a0a0a;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+body.light-theme #accordion-container summary:hover {
+    background: #f8f9fa;
+}
+
+body.light-theme #accordion-container details > details,
+body.light-theme #accordion-container details > details > details {
+    background: #ffffff;
+}
+
+body.light-theme #accordion-container p {
+    color: #374151;
+}
+
+body.light-theme #accordion-container a {
+    color: #0ea5e9;
+}
+
+body.light-theme #accordion-container a:hover {
+    color: #0284c7;
+}
+
+/* Estilos para páginas de contenido (Contribuir y Sobre nosotros) */
+.page-content {
+    max-width: 1000px;
+    margin: 0;
+    padding: 2rem;
+    background-color: #171717;
+    color: #fafafa;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.page-content h2 {
+    color: #fafafa;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    border-bottom: 2px solid #262626;
+    padding-bottom: 1rem;
+}
+
+.page-content h3 {
+    color: #38bdf8;
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+}
+
+.page-content h4 {
+    color: #fafafa;
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.page-content p {
+    color: #e5e5e5;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* Tarjetas de métodos de contribución */
+.contribution-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.method-card {
+    background: #222;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.method-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.1);
+}
+
+.method-card h3 {
+    color: #38bdf8;
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.method-card p {
+    margin-bottom: 0;
+    color: #d1d5db;
+}
+
+/* Sección de características */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: #222;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    border-color: #38bdf8;
+}
+
+.feature-card h4 {
+    color: #38bdf8;
+    margin-top: 0;
+}
+
+.feature-card p {
+    margin-bottom: 0;
+    color: #d1d5db;
+    font-size: 1rem;
+}
+
+/* Secciones especiales */
+.mission-section, .vision-section, .github-section, .contact-section {
+    background: #222;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.values-section {
+    background: #222;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.values-section ul {
+    color: #e5e5e5;
+    list-style: none;
+    padding: 0;
+}
+
+.values-section li {
+    background: #171717;
+    border: 1px solid #262626;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.values-section li:hover {
+    border-color: #38bdf8;
+}
+
+.values-section strong {
+    color: #38bdf8;
+}
+
+/* Enlace de GitHub */
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    background: #38bdf8;
+    color: #0a0a0a;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+    margin-top: 1rem;
+}
+
+.github-link:hover {
+    background: #0ea5e9;
+    color: #ffffff;
+}
+
+.github-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Estilos para modo claro - páginas de contenido */
+body.light-theme .page-content {
+    background-color: #ffffff;
+    color: #0a0a0a;
+}
+
+body.light-theme .page-content h2 {
+    color: #0a0a0a;
+    border-bottom-color: #e5e5e5;
+}
+
+body.light-theme .page-content h3 {
+    color: #0ea5e9;
+}
+
+body.light-theme .page-content h4 {
+    color: #0a0a0a;
+}
+
+body.light-theme .page-content p {
+    color: #374151;
+}
+
+body.light-theme .method-card,
+body.light-theme .feature-card,
+body.light-theme .mission-section,
+body.light-theme .vision-section,
+body.light-theme .github-section,
+body.light-theme .contact-section,
+body.light-theme .values-section {
+    background: #f8f9fa;
+    border-color: #e5e5e5;
+}
+
+body.light-theme .method-card h3,
+body.light-theme .feature-card h4,
+body.light-theme .values-section strong {
+    color: #0ea5e9;
+}
+
+body.light-theme .method-card p,
+body.light-theme .feature-card p {
+    color: #6b7280;
+}
+
+body.light-theme .values-section ul {
+    color: #374151;
+}
+
+body.light-theme .values-section li {
+    background: #ffffff;
+    border-color: #e5e5e5;
+}
+
+body.light-theme .values-section li:hover {
+    border-color: #0ea5e9;
+}
+
+body.light-theme .github-link {
+    background: #0ea5e9;
+    color: #ffffff;
+}
+
+body.light-theme .github-link:hover {
+    background: #0284c7;
+}
+
+/* Estilos mejorados para las tarjetas en páginas secundarias */
+/* Estas clases se aplicarán a los divs con estilos inline */
+
+/* Mejoras para modo claro - añadir sombreado y mejor contraste */
+body.light-theme main[style*="display: flex"][style*="justify-content: center"] div[style*="background: var(--card-bg)"] {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e5e7eb !important;
+    background: #f9fafb !important;
+}
+
+/* Añadir sombreado también para modo oscuro */
+main[style*="display: flex"][style*="justify-content: center"] div[style*="background: var(--card-bg)"] {
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    border: 1px solid #374151 !important;
+    background: #1f2937 !important;
+}
+
+/* Mejorar el contraste de texto en modo claro */
+body.light-theme main[style*="display: flex"] h3[style*="color: var(--accent-color)"] {
+    color: #0ea5e9 !important;
+}
+
+body.light-theme main[style*="display: flex"] p[style*="color: var(--text-secondary)"] {
+    color: #6b7280 !important;
+}
+
+/* Mejorar el contraste de texto en modo oscuro */
+main[style*="display: flex"] h3[style*="color: var(--accent-color)"] {
+    color: #38bdf8 !important;
+}
+
+main[style*="display: flex"] p[style*="color: var(--text-secondary)"] {
+    color: #9ca3af !important;
+}
+
+/* Estilos específicos para tarjetas de contribución */
+.contribution-card {
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    border: 1px solid #374151 !important;
+    background: #1f2937 !important;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.contribution-card:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Estilos para modo claro */
+body.light-theme .contribution-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e5e7eb !important;
+    background: #f9fafb !important;
+}
+
+body.light-theme .contribution-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px);
+}
+
+/* Estilos para tarjetas de sobre nosotros */
+.feature-card {
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    border: 1px solid #374151 !important;
+    background: #1f2937 !important;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.feature-card:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+body.light-theme .feature-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e5e7eb !important;
+    background: #f9fafb !important;
+}
+
+body.light-theme .feature-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px);
+}
+
+/* Estilos para el disclaimer box */
+.disclaimer-box {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.disclaimer-box:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.disclaimer-box h4 {
+    color: #38bdf8;
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.disclaimer-box p {
+    color: #9ca3af;
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+/* Estilos para el mensaje de selección centrado */
+.selection-message {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.selection-message h3 {
+    color: #fafafa;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.selection-message p {
+    color: #9ca3af;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Estilos para modo claro */
+body.light-theme .disclaimer-box {
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+body.light-theme .disclaimer-box:hover {
+    background: rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.4);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+body.light-theme .disclaimer-box h4 {
+    color: #0ea5e9;
+}
+
+body.light-theme .disclaimer-box p {
+    color: #6b7280;
+}
+
+body.light-theme .selection-message h3 {
+    color: #0a0a0a;
+}
+
+body.light-theme .selection-message p {
+    color: #6b7280;
+}
+
+/* Estilos para encuadrar las secciones principales de contenido */
+.page-content-framed {
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
+    border: 1px solid #374151;
+    background: #1a1a1a;
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease;
+}
+
+body.light-theme .page-content-framed {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+/* Estilos de texto para las secciones enmarcadas */
+.page-content-framed h2[style*="color: var(--text-primary)"] {
+    color: #fafafa !important;
+}
+
+.page-content-framed p[style*="color: var(--text-secondary)"] {
+    color: #9ca3af !important;
+}
+
+body.light-theme .page-content-framed h2[style*="color: var(--text-primary)"] {
+    color: #0a0a0a !important;
+}
+
+body.light-theme .page-content-framed p[style*="color: var(--text-secondary)"] {
+    color: #6b7280 !important;
 }

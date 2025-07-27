@@ -25,3 +25,18 @@
 body {
   padding-bottom: 3rem;
 }
+
+/* Footer en modo claro */
+body.light-theme #main-footer {
+  background: #ffffff;
+  color: #0a0a0a;
+  border-top: 1px solid #e5e5e5;
+}
+
+body.light-theme #main-footer a {
+  color: #0a0a0a;
+}
+
+body.light-theme #main-footer a:hover {
+  color: #374151;
+}
