@@ -1,6 +1,3 @@
-// JavaScript for UNIDEPOT site functionalities
-
-// --- ESTRUCTURA DE DATOS DE LA UNIVERSIDAD ---
 const universityData = [
     {
         courseName: "Primer Curso",
@@ -106,183 +103,59 @@ const universityData = [
     }
 ];
 
-// --- FUNCIONES PARA GENERAR HTML DINÁMICAMENTE ---
-function createSubjectAccordion(subjectData) {
-    const li = document.createElement('li');
-    li.className = 'subject-accordion-item border-t border-slate-200 first:border-t-0'; 
+const container = document.getElementById('accordion-container');
 
-    const button = document.createElement('button');
-    button.className = 'subject-name-toggle flex justify-between items-center w-full py-1.5 px-1.5 text-left font-medium text-sm text-sky-700 hover:bg-sky-50 transition-colors duration-150 focus:outline-none'; 
-    button.innerHTML = `<span>${subjectData.name}</span><span class="sub-arrow transform transition-transform duration-300 text-sky-600 text-xs">▼</span>`; 
+container.innerHTML = universityData.map(curso => {
+  const cursoNombre = curso.courseName || curso.nombre;
+  const bloques = curso.semesters || curso.groups;
 
-    const optionsDiv = document.createElement('div');
-    optionsDiv.className = 'subject-options-list ml-2 pl-1.5 pr-1 border-l border-slate-200'; 
-    const optionsUl = document.createElement('ul');
-    optionsUl.className = 'space-y-px py-1'; 
-    
-    const resources = subjectData.resources || {};
-    const resourceLinks = [
-        { label: 'Apuntes', url: resources.apuntes || resources.a || '#' },
-        { label: 'Ejercicios', url: resources.ejercicios || resources.e || '#' },
-        { label: 'Exámenes', url: resources.examenes || resources.x || '#' }
-    ];
-
-    resourceLinks.forEach(linkInfo => {
-        const optionLi = document.createElement('li');
-        const optionLink = document.createElement('a');
-        optionLink.href = linkInfo.url;
-        optionLink.target = "_blank"; 
-        optionLink.rel = "noopener noreferrer"; 
-        optionLink.className = 'block py-0.5 px-1.5 rounded-md text-slate-500 hover:text-sky-700 hover:bg-sky-100 transition-all duration-150 text-xs'; 
-        optionLink.textContent = linkInfo.label;
-        optionLi.appendChild(optionLink);
-        optionsUl.appendChild(optionLi);
-    });
-    optionsDiv.appendChild(optionsUl);
-
-    li.appendChild(button);
-    li.appendChild(optionsDiv);
-    return li;
-}
-
-function createSubjectsList(subjectsArray) {
-    const ul = document.createElement('ul');
-    ul.className = 'space-y-0 pt-0.5 pb-0.5'; 
-    subjectsArray.forEach(subjectData => { 
-        ul.appendChild(createSubjectAccordion(subjectData));
-    });
-    return ul;
-}
-
-function createSubAccordionItem(title, actualContentElement, isSpecializationGroupTitle = false, isContainerOfMoreAccordions = false) {
-    const itemDiv = document.createElement('div'); 
-    itemDiv.className = `sub-accordion-item border-t border-slate-200 ${isSpecializationGroupTitle ? 'pt-0.5' : ''}`; 
-
-    const button = document.createElement('button');
-    const titlePadding = isSpecializationGroupTitle ? 'py-1.5 px-1.5' : 'py-2 px-1.5'; 
-    const titleFontSize = isSpecializationGroupTitle ? 'text-xs font-medium' : 'text-sm font-semibold'; 
-    const titleTextColor = isSpecializationGroupTitle ? 'text-slate-500' : 'text-slate-600';
-    const arrowColor = isSpecializationGroupTitle ? 'text-slate-400' : 'text-slate-500';
-    const arrowSize = isSpecializationGroupTitle ? 'text-xs' : 'text-xs'; 
-
-    button.className = `sub-accordion-toggle flex justify-between items-center w-full ${titlePadding} text-left ${titleFontSize} ${titleTextColor} hover:bg-slate-100 transition-colors duration-150 focus:outline-none`;
-    button.innerHTML = `<span>${title}</span><span class="sub-arrow transform transition-transform duration-300 ${arrowColor} ${arrowSize}">▼</span>`;
-    
-    const listContainerDiv = document.createElement('div'); 
-    if (isContainerOfMoreAccordions) {
-        listContainerDiv.className = 'sub-accordion-group-list';
-    } else {
-        listContainerDiv.className = 'sub-subject-list px-1' + (isSpecializationGroupTitle ? ' ml-1.5' : ''); 
-    }
-
-    listContainerDiv.appendChild(actualContentElement); 
-
-    itemDiv.appendChild(button);
-    itemDiv.appendChild(listContainerDiv);
-    return itemDiv;
-}
-
-// Función principal para construir el contenido de los cursos
-function buildCoursesContent() {
-    const coursesContainer = document.getElementById('courses-container');
-    if (!coursesContainer) return;
-    coursesContainer.innerHTML = '';
-    
-    universityData.forEach(course => {
-        const courseItemDiv = document.createElement('div');
-        courseItemDiv.className = 'course-item bg-white rounded-md shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden'; 
-
-        const courseButton = document.createElement('button');
-        courseButton.className = 'course-toggle flex justify-between items-center w-full p-3 text-left font-semibold text-md text-slate-700 hover:bg-slate-50 transition-colors duration-150 focus:outline-none'; 
-        courseButton.innerHTML = `<span>${course.courseName}</span><span class="arrow transform transition-transform duration-300 text-slate-500 text-sm">▼</span>`; 
-
-        const courseContentDiv = document.createElement('div');
-        courseContentDiv.className = 'course-content-list px-1.5'; 
-        
-        const subAccordionContainerForCourse = document.createElement('div'); 
-        subAccordionContainerForCourse.className = 'space-y-0.5 py-1 sub-accordion-container'; 
-
-        if (course.semesters) { 
-            course.semesters.forEach(semester => {
-                const subjectsUl = createSubjectsList(semester.subjects); 
-                subAccordionContainerForCourse.appendChild(createSubAccordionItem(semester.semesterName, subjectsUl, false, false));
-            });
-        } else if (course.groups) { 
-            course.groups.forEach(group => {
-                if (group.type === "semester") { 
-                    const subjectsUl = createSubjectsList(group.subjects); 
-                    subAccordionContainerForCourse.appendChild(createSubAccordionItem(group.groupName, subjectsUl, false, false));
-                } else if (group.type === "specialization_container") {
-                    const specializationsButtonContainerDiv = document.createElement('div'); 
-                    specializationsButtonContainerDiv.className = 'space-y-0 sub-accordion-container'; 
-
-                    group.specializations.forEach(spec => {
-                        const subjectsUlForSpec = createSubjectsList(spec.subjects); 
-                        specializationsButtonContainerDiv.appendChild(createSubAccordionItem(spec.name, subjectsUlForSpec, true, false));
-                    });
-                    subAccordionContainerForCourse.appendChild(createSubAccordionItem(group.groupName, specializationsButtonContainerDiv, false, true));
-                }
-            });
+  return `
+    <details>
+      <summary>${cursoNombre}</summary>
+      ${bloques.map(bloque => {
+        const bloqueNombre = bloque.semesterName || bloque.groupName || bloque.nombre;
+        if (bloque.subjects) {
+          return `
+            <details>
+              <summary>${bloqueNombre}</summary>
+              ${bloque.subjects.map(asig => `
+                <details>
+                  <summary>${asig.name}</summary>
+                  <p>
+                    <a href="${asig.resources.apuntes || asig.resources.a}">Apuntes</a> |
+                    <a href="${asig.resources.ejercicios || asig.resources.e}">Ejercicios</a> |
+                    <a href="${asig.resources.examenes || asig.resources.x}">Exámenes</a>
+                  </p>
+                </details>
+              `).join('')}
+            </details>
+          `;
         }
-        courseContentDiv.appendChild(subAccordionContainerForCourse);
-        courseItemDiv.appendChild(courseButton);
-        courseItemDiv.appendChild(courseContentDiv);
-        coursesContainer.appendChild(courseItemDiv);
-    });
-}
-
-// Script to update current year in footer
-document.addEventListener('DOMContentLoaded', () => {
-    const currentYearElement = document.getElementById('currentYear');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
-
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // Accordion toggles for course content
-    const mainContentArea = document.querySelector('main');
-    mainContentArea.addEventListener('click', function(e) {
-        const toggleButton = e.target.closest('.course-toggle, .sub-accordion-toggle, .subject-name-toggle');
-        if (toggleButton) {
-            const listElement = toggleButton.nextElementSibling;
-            const arrowElement = toggleButton.querySelector('.arrow') || toggleButton.querySelector('.sub-arrow');
-            const parentElement = toggleButton.parentElement;
-            const parentContainer = parentElement.parentElement;
-            const isAlreadyOpen = listElement.classList.contains('open');
-
-            // Close sibling accordions
-            if (parentContainer) {
-                Array.from(parentContainer.children).forEach(siblingItem => {
-                    if (siblingItem !== parentElement) {
-                        const siblingToggle = siblingItem.querySelector('.course-toggle, .sub-accordion-toggle, .subject-name-toggle');
-                        if (siblingToggle) {
-                            const siblingList = siblingToggle.nextElementSibling;
-                            if (siblingList && siblingList.classList.contains('open')) {
-                                siblingList.classList.remove('open');
-                                siblingToggle.classList.remove('open-active');
-                                const siblingArrow = siblingToggle.querySelector('.arrow') || siblingToggle.querySelector('.sub-arrow');
-                                if (siblingArrow) siblingArrow.classList.remove('rotate-180');
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Toggle current
-            if (listElement) listElement.classList.toggle('open', !isAlreadyOpen);
-            toggleButton.classList.toggle('open-active', !isAlreadyOpen);
-            if (arrowElement) arrowElement.classList.toggle('rotate-180', !isAlreadyOpen);
+        if (bloque.specializations || bloque.specializations) {
+          const especialidades = bloque.specializations || bloque.specializations;
+          return `
+            <details>
+              <summary>${bloqueNombre}</summary>
+              ${especialidades.map(esp => `
+                <details>
+                  <summary>${esp.name}</summary>
+                  ${esp.subjects.map(asig => `
+                    <details>
+                      <summary>${asig.name}</summary>
+                      <p>
+                        <a href="${asig.resources.apuntes || asig.resources.a}">Apuntes</a> |
+                        <a href="${asig.resources.ejercicios || asig.resources.e}">Ejercicios</a> |
+                        <a href="${asig.resources.examenes || asig.resources.x}">Exámenes</a>
+                      </p>
+                    </details>
+                  `).join('')}
+                </details>
+              `).join('')}
+            </details>
+          `;
         }
-    });
-
-    // Build dynamic course content
-    buildCoursesContent();
-});
+        return '';
+      }).join('')}
+    </details>
+  `;
+}).join('');

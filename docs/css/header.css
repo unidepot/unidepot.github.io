@@ -1,0 +1,69 @@
+#main-header {
+  display: flex;
+  align-items: center;         /* Centra verticalmente los hijos */
+  justify-content: space-between; /* Deja el h1 a la izquierda y nav a la derecha */
+  flex-wrap: wrap;
+  color: #fafafa;
+  font-family: 'Ubuntu', sans-serif;
+  background: #0a0a0a;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  min-height: 60px;
+  gap: 1rem;
+}
+
+#main-header h1 {
+  margin: 0;
+  text-align: left;
+  flex: 0 1 auto; /* Solo ocupa el espacio necesario */
+}
+
+#main-header h1 a {
+  color: #fafafa !important;
+  text-decoration: none !important;
+}
+
+#main-header h1 a:visited,
+#main-header h1 a:active,
+#main-header h1 a:focus,
+#main-header h1 a:hover {
+  color: #fafafa !important;
+  text-decoration: none !important;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center; /* Alinea verticalmente los botones */
+  flex: 0 1 auto;
+}
+
+.nav-btn {
+  color: #fafafa;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  transition: background 0.2s;
+}
+
+.nav-btn-contribuir {
+  background-color: #fafafa;
+  color: #0a0a0a;
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover {
+  background: #262626;
+}
+
+.nav-btn-contribuir:hover {
+  background: #e5e5e5;
+}
